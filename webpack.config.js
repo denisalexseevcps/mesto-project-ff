@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подклю�
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 
 module.exports = {
-    entry: { main: './src/index.js' },
+    entry: { main: './src/components/index.js' },
     output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
@@ -14,7 +14,7 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, './dist'),
     compress: true,
-    port: 8080,
+    port: 8090,
     open: true
   },
     module: {
