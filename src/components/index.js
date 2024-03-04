@@ -1,10 +1,6 @@
-// @todo: Темплейт карточки
 import { initialCards, addCard, createCard, toggleateLike, addInfoImage, deleteCard } from './cards.js'
-import {openPopup, closePopup, closePopupOnEsc} from './modal.js';
+import {openPopup, closePopup} from './modal.js';
 import '../pages/index.css';
-
-
-const popupEditButtonClose = document.querySelector('.popup__close');
 
 const editButton = document.querySelector('.profile__edit-button');
 const editPopup = document.querySelector('.popup_type_edit');
@@ -14,22 +10,15 @@ const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__description');
 const editform = document.querySelector('.popup__form');
 const cardTemplate = document.querySelector('#card-template').content;
-
 const addButton = document.querySelector('.profile__add-button');
 const addPopup = document.querySelector('.popup_type_new-card');
 const popupAddCardName = document.querySelector('.popup__input_type_card-name');
 const popupAddCardLink = document.querySelector('.popup__input_type_url');
 const addform = document.querySelector('.popup_type_new-card');
-
-
 const imagePopup = document.querySelector('.popup_type_image');
-const linkImage = document.querySelector('.popup__image');
-const nameImage = document.querySelector('.popup__caption');
-
-
-// @todo: DOM узлы
 const cardsPlacesList = document.querySelector('.places__list');
 const popups = Array.from(document.querySelectorAll('.popup'));
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -41,12 +30,12 @@ function handleProfileFormSubmit(evt) {
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
   const tempCard = {name:popupAddCardName.value,link:popupAddCardLink.value}
-  addCard(cardsPlacesList, createCard(cardTemplate, tempCard,deleteCard,toggleateLike,addInfoImage,openPopup, imagePopup));
+  addCard(cardsPlacesList, createCard(cardTemplate, tempCard,deleteCard,toggleateLike,addInfoImage, imagePopup));
   closePopup(addPopup);
 }
 
 initialCards.forEach((item) => {
-    addCard(cardsPlacesList,createCard(cardTemplate, item,deleteCard,toggleateLike,addInfoImage,openPopup, imagePopup))
+    addCard(cardsPlacesList,createCard(cardTemplate, item,deleteCard,toggleateLike,addInfoImage, imagePopup))
   });
 
 function fillProfileData() {

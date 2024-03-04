@@ -30,7 +30,7 @@ export function addCard(place, element) {
   place.prepend(element);
 }
 
-export function createCard(cardTemplate, element ,deleteCard,toggleateLike,addInfoImage,openPopup,imagePopup) {
+export function createCard(cardTemplate, element ,deleteCard,toggleateLike,addInfoImage,imagePopup) {
   const card = cardTemplate.querySelector('.card').cloneNode(true);
   const cardImage = card.querySelector('.card__image');
   const cardTitle = card.querySelector('.card__title');
@@ -42,8 +42,8 @@ export function createCard(cardTemplate, element ,deleteCard,toggleateLike,addIn
   cardDelete.addEventListener('click', () => {deleteCard(card)});  
   cardLike.addEventListener('click', toggleateLike); 
   cardImage.addEventListener('click', () => {
-    addInfoImage(element);
-    openPopup(imagePopup)
+    addInfoImage(cardTitle.textContent,cardImage.src ,imagePopup);
+    // openPopup(imagePopup)
   });
   return card;
 }
@@ -52,10 +52,13 @@ export function toggleateLike(event) {
   event.target.classList.toggle('card__like-button_is-active');
 }
 
-export function addInfoImage(element) {
-  nameImage.textContent = element.name;
-  nameImage.alt = element.name;
-  linkImage.src = element.link;
+export function addInfoImage(name, link, element) {
+  const linkImage = element.querySelector('.popup__image');
+  const nameImage = element.querySelector('.popup__caption');
+  nameImage.textContent = name;
+  nameImage.alt = name;
+  linkImage.src = link;
+  openPopup(element);
 }
 
 export function deleteCard(event) {
