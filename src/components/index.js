@@ -1,9 +1,5 @@
-import {
-  initialCards,
-  createCard,
-  toggleateLike,
-  deleteCard,
-} from "./cards.js";
+import { initialCards } from "./cards.js";
+import { createCard, toggleateLike, deleteCard } from "./card.js";
 import { openPopup, closePopup } from "./modal.js";
 import "../pages/index.css";
 
@@ -45,7 +41,7 @@ function addInfoImage(name, link, element) {
   openPopup(element);
 }
 
-function handlecardNewformsPopupubmit(evt) {
+function submitAddCardForm(evt) {
   evt.preventDefault();
   const tempCard = {
     name: popupAddCardName.value,
@@ -89,6 +85,8 @@ profileButtonEdit.addEventListener("click", () => {
 });
 
 cardAddButton.addEventListener("click", () => {
+  popupAddCardName.value = "";
+  popupAddCardLink.value = "";
   openPopup(cardNewPopup);
 });
 
@@ -104,4 +102,4 @@ formsPopup.forEach((popup) => {
 });
 
 formEditInfo.addEventListener("submit", handleProfileFormSubmit);
-cardNewPopup.addEventListener("submit", handlecardNewformsPopupubmit);
+cardNewPopup.addEventListener("submit", submitAddCardForm);
