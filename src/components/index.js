@@ -2,6 +2,7 @@ import { initialCards } from "./cards.js";
 import { createCard, toggleateLike, deleteCard } from "./card.js";
 import { openPopup, closePopup } from "./modal.js";
 import "../pages/index.css";
+import { enableValidation, clearValidation } from "./validation.js";
 
 const profileButtonEdit = document.querySelector(".profile__edit-button");
 const profileEditPopup = document.querySelector(".popup_type_edit");
@@ -20,6 +21,14 @@ const popupAddCardLink = document.querySelector(".popup__input_type_url");
 const imagePopup = document.querySelector(".popup_type_image");
 const cardsPlacesList = document.querySelector(".places__list");
 const formsPopup = Array.from(document.querySelectorAll(".popup"));
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -39,6 +48,7 @@ function addInfoImage(name, link, element) {
   nameImage.alt = name;
   linkImage.src = link;
   openPopup(element);
+  // clearValidation(element,validationConfig);
 }
 
 function submitAddCardForm(evt) {
@@ -82,12 +92,14 @@ function fillProfileData() {
 
 profileButtonEdit.addEventListener("click", () => {
   openPopup(profileEditPopup), fillProfileData();
+  clearValidation(profileEditPopup,validationConfig) ;
 });
 
 cardAddButton.addEventListener("click", () => {
   popupAddCardName.value = "";
   popupAddCardLink.value = "";
   openPopup(cardNewPopup);
+  clearValidation(cardNewPopup,validationConfig) ;
 });
 
 formsPopup.forEach((popup) => {
@@ -103,3 +115,9 @@ formsPopup.forEach((popup) => {
 
 formEditInfo.addEventListener("submit", handleProfileFormSubmit);
 cardNewPopup.addEventListener("submit", submitAddCardForm);
+
+
+
+
+// Вызовем функцию
+enableValidation(validationConfig); 
