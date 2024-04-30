@@ -20,8 +20,6 @@ export function createCard(
   cardImage.src = element.link;
   cardImage.alt = element.name;
   spanLike.textContent = element.like.length;
-  // console.log(element._id);
-  // console.log(profileOwner._id);
   if (element._id == profileOwner._id) {
     cardDelete.addEventListener("click", () =>
       deleteCard(card, element.cardId)
@@ -29,9 +27,6 @@ export function createCard(
   } else {
     cardDelete.classList.add("card__delete-button_is-hidden");
   }
-  // cardDelete.addEventListener("click", () => {
-  //   deleteCard(card);
-  // });
   cardLike.addEventListener("click", () => {
     toggleateLike(cardLike, element.cardId, spanLike);
   });
@@ -62,7 +57,6 @@ export function deleteCard(event, cardId) {
 }
 
 export function toggleateLike(event, cardId, spanLike) {
-  // console.log('click to like')
   if (event.classList.contains("card__like-button_is-active")) {
     removeLikeById(cardId)
       .then((res) => {
@@ -82,6 +76,4 @@ export function toggleateLike(event, cardId, spanLike) {
         console.log(err);
       });
   }
-
-  // event.target.classList.toggle("card__like-button_is-active");
 }

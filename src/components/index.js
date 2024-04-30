@@ -1,4 +1,3 @@
-// import { initialCards } from "./cards.js";
 import { createCard, toggleateLike, deleteCard } from "./card.js";
 import { openPopup, closePopup } from "./modal.js";
 import "../pages/index.css";
@@ -76,7 +75,6 @@ function addInfoImage(name, link, element) {
   openPopup(element);
 }
 
-// Вывести карточки на страницу
 function initalizeCards(cards) {
   const initialCards = [];
   cards.forEach((item) => {
@@ -134,17 +132,13 @@ function submitAddCardForm(evt) {
 }
 
 function fetchData() {
-  //! Инициализация карточек
   const promiseCards = getInitialCards();
   const promiseProfile = getProfileInfo();
   Promise.all([promiseCards, promiseProfile])
     .then(([cards, profile]) => {
-      // console.log(profile)
       initializeProfile(profile);
-      // profileOwner = profile;
       profileOwner = profile;
       initalizeCards(cards);
-      // console.log(cards)
     })
     .catch((err) => {
       console.log(err);
@@ -160,10 +154,6 @@ profileButtonEdit.addEventListener("click", () => {
   openPopup(profileEditPopup), fillProfileData();
   clearValidation(profileEditPopup, validationConfig);
 });
-
-// function fillEditAvatar(){
-
-// }
 
 profileImg.addEventListener("click", () => {
   openPopup(profileImageEdit);
@@ -216,5 +206,4 @@ function initializeProfile(profileInfo) {
 }
 
 fetchData();
-// Вызовем функцию
 enableValidation(validationConfig);
