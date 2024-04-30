@@ -1,3 +1,14 @@
 .popup__form {
   margin-top: 27px;
 }
+
+.popup__form-error_active {
+  font-family: 'Inter', Arial, sans-serif;
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: red;
+  opacity: 0;
+  transition: 0.3s;
+}
