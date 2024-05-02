@@ -86,7 +86,7 @@ function prepareData(data) {
 
 function initalizeCards(cards) {
   const initialCards = [];
-  cards.forEach((item) => { 
+  cards.forEach((item) => {
     initialCards.push(prepareData(item));
   });
 
@@ -191,7 +191,7 @@ function handleProfileAvatar(evt) {
   editAvatar(popupEditAvatar.value)
     .then((data) => {
       closePopup(profileImageEdit);
-      initializeProfile(data); 
+      initializeProfile(data);
     })
     .catch((err) => {
       console.log(err);
