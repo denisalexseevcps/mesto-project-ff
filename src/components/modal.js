@@ -1,7 +1,7 @@
 function openPopup(element) {
   element.classList.add("popup_is-animated");
   setTimeout(() => {
-    popup.classList.add("popup_is-opened");
+    element.classList.add("popup_is-opened");
   }, 1); 
    document.addEventListener("keydown", closePopupOnEsc);
 }
